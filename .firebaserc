@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "netflix-87327": {
+      "hosting": {
+        "netflix-angular": [
+          "netflix-87327"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "netflix-87327"
+  }
+}

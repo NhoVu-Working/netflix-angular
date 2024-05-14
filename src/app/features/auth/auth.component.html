@@ -1,0 +1,22 @@
+<!-- auth.component.html -->
+<div class="flex justify-center items-center min-h-screen bg-black bg-opacity-20 auth-container bg-cover bg-center">
+  <div class="w-full max-w-md p-5 bg-white bg-opacity-85 rounded-lg shadow">
+    <div class="flex justify-center items-center space-x-4 mt-4">
+      <button class="btn-login" (click)="currentView = 'login'">Login</button>
+      <button class="btn-register" (click)="currentView = 'register'">Register</button>
+      <button class="btn-forgot" (click)="currentView = 'forgot'">Forgot Password</button>
+    </div>
+
+    <div class="view-container">
+      <ng-container *ngIf="currentView === 'login'">
+        <app-login></app-login>
+      </ng-container>
+      <ng-container *ngIf="currentView === 'register'">
+        <app-register></app-register>
+      </ng-container>
+      <ng-container *ngIf="currentView === 'forgot'">
+        <app-forgot-password></app-forgot-password>
+      </ng-container>
+    </div>
+  </div>
+</div>

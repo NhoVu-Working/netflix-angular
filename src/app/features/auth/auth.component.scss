@@ -1,0 +1,47 @@
+/* auth.component.scss */
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+/* auth.component.scss */
+/* auth.component.scss */
+.auth-container {
+  min-height: 100vh;
+  background-image: url('/assets/netflix-background.jpg'); /* Thay đổi đường dẫn tới hình nền của bạn */
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 1; /* Điều chỉnh giá trị opacity tại đây */
+}
+
+.view-container {
+  background-color: rgba(255, 255, 255, 0.5); /* Giảm độ đục để tăng độ trong suốt */
+  border-radius: 10px; /* Giữ viền bo tròn */
+  padding: 20px; /* Padding để không gian bên trong */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Bóng mờ nhẹ để tăng độ nổi */
+  width: 100%;
+  max-width: 360px; /* Giới hạn chiều rộng tối đa để tránh quá to */
+  margin: auto; /* Căn giữa trong màn hình */
+  display: flex;
+  flex-direction: column;
+  opacity: .9;
+}
+
+.btn-login, .btn-register, .btn-forgot {
+  @apply text-white font-bold py-2 px-4 rounded focus:outline-none ;
+  @apply transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-110;
+}
+
+.btn-login {
+  @apply bg-blue-500 hover:bg-blue-700;
+}
+
+.btn-register {
+  @apply bg-green-500 hover:bg-green-700;
+}
+
+.btn-forgot {
+  @apply bg-red-500 hover:bg-red-700;
+}
