@@ -10,3 +10,8 @@ export const firebaseConfig = {
   measurementId: "G-PZ3KHM6T09"
 };
 
+export const movieConfig = {
+  production:false,
+  tmdbApiKey:'d4c3105163ce6b12372464bcab9c84de'
+
+}

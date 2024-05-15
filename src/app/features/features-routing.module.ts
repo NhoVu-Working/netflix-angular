@@ -7,13 +7,13 @@ import {NgModule} from "@angular/core";
 
 const routes: Routes = [
   {
-    path: 'auth',
+    path: '',
     component: AuthComponent,
     children: [
       { path: '', redirectTo: 'login', pathMatch: 'full' },
-      { path: 'login', component: LoginComponent },
-      { path: 'register', component: RegisterComponent },
-      { path: 'forgot-password', component: ForgotPasswordComponent }
+      { path: 'login', component: LoginComponent ,title: 'Login'},
+      { path: 'register', component: RegisterComponent ,title:'register'},
+      { path: 'forgot-password', component: ForgotPasswordComponent,title:'Forgot Password' }
     ]
   }
 ];

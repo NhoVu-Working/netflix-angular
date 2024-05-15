@@ -5,3 +5,23 @@
   border-radius: 5px;
   background-color: #FFEBEE; // Màu nền nhạt cho thông báo lỗi
 }
+/* register.component.scss */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Thêm style cụ thể ở đây nếu cần */
+/* TailwindCSS styles for the register form container */
+.bg-white.bg-opacity-80.rounded-xl.shadow-xl {
+  max-width: 400px; /* Chỉnh kích thước tối đa của container */
+  width: 100%; /* Đảm bảo container chiếm đúng kích thước cần thiết */
+  margin: auto; /* Căn giữa container */
+  padding: 2rem; /* Thêm padding để tạo khoảng cách đều xung quanh */
+}
+input[type="email"], input[type="password"] {
+  @apply w-full; /* Đảm bảo rằng input chiếm toàn bộ chiều rộng có thể */
+  @apply px-3 py-2; /* Padding cho input */
+  @apply border-gray-300 placeholder-gray-500; /* Style cho border và placeholder */
+  @apply text-gray-900 rounded-md; /* Làm tròn góc và đặt màu chữ */
+  @apply focus:outline-none focus:ring-blue-500 focus:border-blue-500; /* Style khi focus */
+}

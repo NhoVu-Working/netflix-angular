@@ -1,41 +1,18 @@
-<!--<div class="login-container">-->
-<!--  <div class="overlay">-->
-<!--    <mat-card class="login-form">-->
-<!--      <mat-card-header>-->
-<!--        <mat-card-title>Login</mat-card-title>-->
-<!--      </mat-card-header>-->
-<!--      <mat-card-content>-->
-<!--        <form (ngSubmit)="login()">-->
-<!--          <mat-form-field appearance="fill">-->
-<!--            <mat-label>Email</mat-label>-->
-<!--            <input matInput [(ngModel)]="email" name="email" required>-->
-<!--          </mat-form-field>-->
-<!--          <mat-form-field appearance="fill">-->
-<!--            <mat-label>Password</mat-label>-->
-<!--            <input matInput type="password" [(ngModel)]="password" name="password" required>-->
-<!--          </mat-form-field>-->
-<!--          <button mat-raised-button color="primary" class="w-full">Log in</button>-->
-<!--          <div *ngIf="errorMessage" class="error-message">{{errorMessage}}</div>-->
-<!--        </form>-->
-<!--      </mat-card-content>-->
-<!--      <button mat-raised-button color="accient" (click)="loginWithGoogle()">Login With Google</button>-->
-<!--      <button mat-raised-button color='primary' routerLink="/register"> Register Account</button>-->
-<!--    </mat-card>-->
-<!--  </div>-->
-<!--</div>-->
-
 
 
 <!-- login.component.html -->
-<form class="space-y-4" (ngSubmit)="login()">
+<form class="space-y-4" (ngSubmit)="onLogin()">
   <div>
     <label class="block text-sm font-medium text-gray-700">Email</label>
-    <input type="email" [(ngModel)]="email" required class="input input-bordered w-full">
+    <input type="email" [(ngModel)]="email" required class="input input-bordered w-full" [ngModelOptions]="{standalone: true}">
   </div>
   <div>
     <label class="block text-sm font-medium text-gray-700">Password</label>
-    <input type="password" [(ngModel)]="password" required class="input input-bordered w-full">
+    <input type="password" [(ngModel)]="password" required class="input input-bordered w-full" [ngModelOptions]="{standalone: true}">
+  </div>
+  <div *ngIf="errorMessage" class="p-4 text-red-600 bg-red-100 rounded-lg">
+    {{ errorMessage }}
   </div>
   <button type="submit" class="btn btn-primary w-full">Log in</button>
-  <button type="button" class="btn btn-secondary w-full mt-2" (click)="loginWithGoogle()">Login with Google</button>
 </form>
+<button type="button" class="btn btn-secondary w-full mt-2" (click)="onLoginWithGoogle()">Login with Google</button>

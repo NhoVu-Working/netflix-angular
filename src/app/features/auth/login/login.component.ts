@@ -9,6 +9,7 @@ import {MatLabel} from "@angular/material/form-field";
 import {Router, RouterLink} from "@angular/router";
 import {NgIf} from "@angular/common";
 import {GoogleAuthProvider} from '@angular/fire/auth'
+import {AuthService} from "../../../core/services/auth.service";
 
 @Component({
   selector: 'app-login',
@@ -35,36 +36,33 @@ export class LoginComponent {
   password: string = '';
   errorMessage: string = "";
 
-  constructor(private afAuth: AngularFireAuth, private router: Router) {
+  constructor(private authService:AuthService, private router:Router) {
   }
 
-  login(): void {
-    this.afAuth.signInWithEmailAndPassword(this.email, this.password)
-      .then(res => {
-        console.log("login successfully ", res)
-        this.router.navigate(['/home']).then(res => {
-          console.log("navigate to home page")
-        })
-
-      })
-      .catch(error => {
-        console.log("login failed");
-        this.handleError(error)
-      })
-  }
-
-  loginWithGoogle() {
-    this.afAuth.signInWithPopup(new GoogleAuthProvider()).then(res => {
-      console.log("login successfully ", res)
-      this.router.navigate(['/home']).then(res => {
-        console.log("navigate to home page")
-      })
-        .catch(error => {
-          this.handleError(error)
-        })
-    })
+  async onLogin():Promise<void>{
+    try {
+      await this.authService.loginInWithEmailAndPassword(this.email,this.password);
+    }
+    catch (error) {
+      console.log("login failed ",error)
+      this.handleError(error)
+    }
 
   }
+
+  async onLoginWithGoogle():Promise<void> {
+    try{
+      await this.authService.loginWithGoogle();
+    }
+    catch (error) {
+      console.log("login failed ",error)
+      this.handleError(error)
+    }
+
+
+  }
+
+
   navigateRegister(){
     this.router.navigate(['/register']).then(res => {
       console.log("navigate to register page")
@@ -80,7 +78,7 @@ export class LoginComponent {
         this.errorMessage = "No user found with this email";
         break;
       case 'auth/invalid-credential':
-        this.errorMessage = "The supplied credentials are incorrect or have expired. Please try again.";
+        this.errorMessage = "Incorrect password,please try again";
         break;
       default:
         this.errorMessage = "An unexpected error occurred .Please try again later.";

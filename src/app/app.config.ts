@@ -10,15 +10,17 @@ import {getDatabase, provideDatabase} from "@angular/fire/database";
 import {getStorage, provideStorage} from "@angular/fire/storage";
 import {getFunctions, provideFunctions} from "@angular/fire/functions";
 import {firebaseConfig} from "./enviroments/enviroments";
+import {provideHttpClient} from "@angular/common/http";
 
 
 export const appConfig: ApplicationConfig = {
-  providers: [provideRouter(routes), provideAnimationsAsync(), provideAnimationsAsync(),
+  providers: [provideRouter(routes), provideAnimationsAsync(), provideAnimationsAsync(),provideHttpClient(),
     importProvidersFrom(AngularFireModule.initializeApp(firebaseConfig),
       provideAuth(() => getAuth()),
       provideFirestore(() => getFirestore()),
       provideDatabase(() => getDatabase()),
       provideStorage(() => getStorage()),
       provideFunctions(() => getFunctions()),),
-    ]
+    ],
+
 };

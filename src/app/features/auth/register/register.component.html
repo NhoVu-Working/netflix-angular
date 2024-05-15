@@ -1,19 +1,19 @@
-<mat-card>
-  <mat-card-header>
-    <mat-card-title>Register</mat-card-title>
-  </mat-card-header>
-  <mat-card-content>
-    <form (ngSubmit)="register()">
-      <mat-form-field class="full-width">
-        <mat-label>Email</mat-label>
-        <input matInput [(ngModel)]="email" name="email" required>
-      </mat-form-field>
-      <mat-form-field class="full-width">
-        <mat-label>Password</mat-label>
-        <input matInput [(ngModel)]="password" name="password" type="password" required>
-      </mat-form-field>
-      <button mat-raised-button color="primary">Register</button>
-      <div *ngIf="errorMessage">{{ errorMessage }}</div>
+
+
+<!-- register.component.html -->
+    <form class="space-y-6" (ngSubmit)="onRegister()">
+      <div>
+        <label for="email" class="sr-only">Email address</label>
+        <input id="email" name="email" type="email" [(ngModel)]="email" [ngModelOptions]="{standalone:true}" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm" placeholder="Email address">
+      </div>
+      <div>
+        <label for="password" class="sr-only">Password</label>
+        <input id="password" name="password" type="password" [(ngModel)]="password" [ngModelOptions]="{standalone:true}" required class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm" placeholder="Password">
+      </div>
+      <div>
+        <button type="submit" class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+          Register
+        </button>
+      </div>
     </form>
-  </mat-card-content>
-</mat-card>
+

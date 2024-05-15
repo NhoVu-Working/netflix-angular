@@ -8,6 +8,7 @@ import {AngularFireAuth} from "@angular/fire/compat/auth";
 import {Router} from "@angular/router";
 import {NgIf} from "@angular/common";
 import {MatLabel} from "@angular/material/form-field";
+import {AuthService} from "../../../core/services/auth.service";
 
 @Component({
   selector: 'app-register',
@@ -31,23 +32,19 @@ export class RegisterComponent {
   email: string = "";
   password: string = ""
   errorMessage: string = ""
+  successMessage:string=""
 
-  constructor(private afAuth: AngularFireAuth, private router: Router) {
+  constructor(private authService:AuthService, private router: Router) {
   }
 
-  register() {
-    this.afAuth.createUserWithEmailAndPassword(this.email, this.password).then(res => {
-      console.log('Registerd successfully', res);
-      this.router.navigate(['/login']).then(res => {
-        console.log("navigate to login page")
-      })
-        .catch(error => {
-          this.handleError(error)
+  async onRegister() {
+    try {
+      await  this.authService.register(this.email,this.password);
 
-        })
-
-
-    })
+    }
+    catch (error) {
+      this.handleError(error);
+    }
   }
 
   handleError(error: any): void {

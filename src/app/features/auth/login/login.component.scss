@@ -44,3 +44,7 @@
   cursor: pointer;
 }
 
+/* Error message styles */
+.errorMessage {
+  @apply text-red-500 bg-red-100 border border-red-400 p-3 rounded;
+}
