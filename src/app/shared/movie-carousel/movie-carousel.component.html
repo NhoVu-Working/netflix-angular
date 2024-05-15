@@ -1,0 +1,12 @@
+<!-- shared/movie-carousel/movie-carousel.component.html -->
+<div class="movie-carousel">
+  <h2>{{ title }}</h2>
+  <swiper-container [slidesPerView]="5" [spaceBetween]="10" navigation loop="true">
+    <swiper-slide *ngFor="let movie of movies">
+      <div class="movie-slide">
+        <img [src]="getMovieImageUrl(movie.poster_path)" alt="{{ movie.title }}" />
+        <p>{{ movie.title }}</p>
+      </div>
+    </swiper-slide>
+  </swiper-container>
+</div>
