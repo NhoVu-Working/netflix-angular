@@ -4,6 +4,7 @@ import {AppRoutingModule} from "./app-routing.module";
 import {CoreModule} from "./core/core.module";
 import {LayoutModule} from "@angular/cdk/layout";
 import 'swiper/swiper-bundle.min.css';
+import {FooterComponent} from "./layout/footer/footer.component";
 
 @NgModule({
   declarations: [],
@@ -12,6 +13,7 @@ import 'swiper/swiper-bundle.min.css';
     AppRoutingModule,
     CoreModule,
     LayoutModule,
+    FooterComponent,
   ],
   providers: [],
   bootstrap: [],

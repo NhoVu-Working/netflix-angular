@@ -4,6 +4,7 @@ import {BannerComponent} from "../../layout/banner/banner.component";
 import {HeaderComponent} from "../../layout/header/header.component";
 import {VideoContent} from "../../shared/models/video-content.model";
 import {MovieCarouselComponent} from "../../shared/movie-carousel/movie-carousel.component";
+import {FooterComponent} from "../../layout/footer/footer.component";
 
 @Component({
   selector: 'app-home',
@@ -11,7 +12,8 @@ import {MovieCarouselComponent} from "../../shared/movie-carousel/movie-carousel
   imports: [
     BannerComponent,
     HeaderComponent,
-    MovieCarouselComponent
+    MovieCarouselComponent,
+    FooterComponent
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'

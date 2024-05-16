@@ -1,0 +1,25 @@
+.footer {
+  background-color: #141414;
+  color: #757575;
+
+  a {
+    color: #757575;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  h4 {
+    color: #ffffff;
+  }
+
+  select {
+    background-color: #333333;
+    border: none;
+    color: #ffffff;
+  }
+
+  p {
+    margin-top: 1rem;
+  }
+}

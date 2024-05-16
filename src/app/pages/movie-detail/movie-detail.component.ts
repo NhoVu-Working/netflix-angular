@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit,inject} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {MovieService} from "../../core/services/movie.service";
 import {VideoContent} from "../../shared/models/video-content.model";
@@ -6,6 +6,7 @@ import {DomSanitizer, SafeResourceUrl} from "@angular/platform-browser";
 import {NgForOf, NgIf, NgStyle} from "@angular/common";
 import {HeaderComponent} from "../../layout/header/header.component";
 import {FooterComponent} from "../../layout/footer/footer.component";
+import {MovieCarouselComponent} from "../../shared/movie-carousel/movie-carousel.component";
 
 @Component({
   selector: 'app-movie-detail',
@@ -15,12 +16,14 @@ import {FooterComponent} from "../../layout/footer/footer.component";
     NgIf,
     HeaderComponent,
     NgForOf,
-    FooterComponent
+    FooterComponent,
+    MovieCarouselComponent
   ],
   templateUrl: './movie-detail.component.html',
   styleUrl: './movie-detail.component.scss'
 })
 export class MovieDetailComponent implements OnInit {
+  popularMovie:VideoContent[]=[];
   movie: VideoContent | string = '';
   videoUrl?: SafeResourceUrl = '';
   backgroundUrl?: SafeResourceUrl | string | null = ''
@@ -43,6 +46,7 @@ export class MovieDetailComponent implements OnInit {
       const movieId: number = params['id']
       this.getMovieKey(movieId)
       this.getMovieDetail(movieId)
+      this.getPopularMovie()
     })
   }
 
@@ -79,6 +83,13 @@ export class MovieDetailComponent implements OnInit {
   playMovie(event: Event) {
     event.stopPropagation();
     this.showVideo = true;
+  }
+  getPopularMovie(){
+    this.movieService.getPopularMovies().subscribe(data => {
+      this.popularMovie=data.results;
+      console.log(this.popularMovie)
+    })
+
   }
 
 

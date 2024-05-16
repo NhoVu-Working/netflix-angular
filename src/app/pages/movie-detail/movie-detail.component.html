@@ -3,16 +3,17 @@
 <!-- src/app/pages/movie-detail/movie-detail.component.html -->
 <!-- layout/banner/banner.component.html -->
 <div class="movie-detail">
-<div class="banner" [ngStyle]="{'background-image': 'url(https://image.tmdb.org/t/p/original' + backgroundUrl + ')'}" (click)="playMovie($event)">
-  <div class="banner-content">
-    <h1>{{ title }}</h1>
-    <p>{{ overview }}</p>
-    <button class="play-button"(click)="playMovie($event)">Play</button>
+  <div class="banner" [ngStyle]="{'background-image': 'url(https://image.tmdb.org/t/p/original' + backgroundUrl + ')'}"
+       (click)="playMovie($event)">
+    <div class="banner-content">
+      <h1>{{ title }}</h1>
+      <p>{{ overview }}</p>
+      <button class="play-button" (click)="playMovie($event)">Play</button>
+    </div>
+    <div class="banner-video" *ngIf="showVideo">
+      <iframe [src]="videoUrl" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    </div>
   </div>
-  <div class="banner-video" *ngIf="showVideo">
-    <iframe [src]="videoUrl" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-  </div>
-</div>
   <div class="movie-content">
     <div class="movie-details">
       <h2>Details</h2>
@@ -27,23 +28,7 @@
     </div>
   </div>
 </div>
+<app-movie-carousel title="Popular Movies" [movies]="popularMovie"></app-movie-carousel>
 <app-footer></app-footer>
 
 
-
-
-
-
-
-
-
-
-<!--<div *ngIf="movie" class="movie-detail">-->
-<!--  <div class="movie-header"-->
-<!--       [ngStyle]="{'background-image': 'url(https://image.tmdb.org/t/p/original' + backgroundUrl + ')'}">-->
-<!--    <div class="movie-header-content">-->
-<!--      <h1 class="title">{{ title }}</h1>-->
-<!--      <p class="overview">{{ overview }}</p>-->
-<!--      <button class="play-button" (click)="playMovie()">Play</button>-->
-<!--    </div>-->
-<!--  </div>-->
