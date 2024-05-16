@@ -29,7 +29,7 @@ export class BannerComponent implements OnInit {
     this.loadRandomMovie()
   }
 
-  async loadRandomMovie():Promise<any> {
+  async loadRandomMovie(): Promise<any> {
     this.movieService.getPopularMovies().subscribe((data: { results: VideoContent[] }) => {
       console.log('Random Movie', data.results)
       const randomIndex = Math.floor(Math.random() * data.results.length)
@@ -38,17 +38,24 @@ export class BannerComponent implements OnInit {
       this.movieOverView = movie.overview;
       this.backgroundImageUrl = `https://image.tmdb.org/t/p/original${movie.backdrop_path}`
       this.movieService.getMovie(movie.id).subscribe(videoData => {
-        console.log("video url" +videoData.results)
-        if(videoData.results.length) {
-          this.videoUrl=`https://www.youtube.com/embed/${videoData.results[0].key}`
+        console.log("video url" + videoData.results)
+        if (videoData.results.length) {
+          this.videoUrl = `https://www.youtube.com/embed/${videoData.results[0].key}`
         }
       })
     })
   }
-  playMovie():void {
-    this.showVideo=true;
+
+  playMovie(event?: MouseEvent): void {
+    if (event) {
+      event.stopPropagation();
+    }
+    this.showVideo = true;
 
 
+  }
+  addToList(event: MouseEvent): void {
+    event.stopPropagation();
   }
 
 

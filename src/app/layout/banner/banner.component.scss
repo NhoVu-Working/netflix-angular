@@ -27,6 +27,42 @@
     &.hidden {
       display: none;
     }
+
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 0.5rem;
+    }
+
+    p {
+      font-size: 1.25rem;
+      margin-bottom: 1rem;
+      max-width: 45rem;
+    }
+
+    .play-button, .my-list-button {
+      cursor: pointer;
+      padding: 1rem 3rem; /* Tăng kích thước nút */
+      margin-right: 1rem;
+      border: none;
+      outline: none;
+      font-size: 1.25rem; /* Tăng kích thước font */
+      border-radius: 5px;
+      background-color: rgba(51, 51, 51, 0.5);
+      color: white;
+      transition: background-color 0.3s ease;
+
+      &:hover {
+        background-color: rgba(51, 51, 51, 0.8);
+      }
+    }
+
+    .play-button {
+      background-color: rgba(255, 0, 0, 0.8); /* Màu nền khác biệt */
+    }
+
+    .my-list-button {
+      background-color: rgba(51, 51, 51, 0.5);
+    }
   }
 
   .banner-video {

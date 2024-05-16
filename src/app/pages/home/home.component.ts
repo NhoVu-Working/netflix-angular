@@ -21,7 +21,6 @@ export class HomeComponent implements OnInit {
   popularOnNetflix:VideoContent[]=[];
   nowPlayingMovies: VideoContent[] = [];
   popularMovies: VideoContent[] = [];
-  trendingMovies: VideoContent[] = [];
   topRateMovies: VideoContent[] = [];
   upComingMovies: VideoContent[] = [];
 
@@ -41,6 +40,14 @@ export class HomeComponent implements OnInit {
     });
     this.movieService.getDiscoveryMovie().subscribe(data => {
       this.popularOnNetflix=data.results;
+    })
+    this.movieService.getTopRateMovies().subscribe(data => {
+      this.topRateMovies=data.results;
+
+    })
+    this.movieService.getUpcomingMovies().subscribe(data => {
+
+      this.upComingMovies=data.results;
     })
 
   }

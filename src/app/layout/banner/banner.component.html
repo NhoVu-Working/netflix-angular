@@ -1,9 +1,9 @@
 <!-- layout/banner/banner.component.html -->
-<div class="banner" [ngStyle]="{'background-image': 'url(' + backgroundImageUrl + ')'}">
+<div class="banner" [ngStyle]="{'background-image': 'url(' + backgroundImageUrl + ')'}" (click)="playMovie()">
   <div class="banner-content">
     <h1>{{ movieTitle }}</h1>
     <p>{{ movieOverView }}</p>
-    <button (click)="playMovie()">Play</button>
+    <button class="play-button"(click)="playMovie()">Play</button>
   </div>
   <div class="banner-video" *ngIf="showVideo">
     <iframe [src]="sanitizer.bypassSecurityTrustResourceUrl(videoUrl)" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>

@@ -30,7 +30,7 @@ export class MovieService {
   }
 
   getTopRateMovies(): Observable<any> {
-    return this.http.get<VideoContent>(`${this.baseUrl}/movie/top_rate?api_key=${this.apiKey}&language=en-Us`)
+    return this.http.get<VideoContent>(`${this.baseUrl}/movie/top_rated?api_key=${this.apiKey}&language=en-Us`)
 
   }
 
@@ -46,6 +46,9 @@ export class MovieService {
   getMovie(id:number):Observable<any>{
     return this.http.get<any>(`${this.baseUrl}/movie/${id}/videos?api_key=${this.apiKey}&language=en-US`)
 
+  }
+  getMovieDetail(movieId: number): Observable<VideoContent> {
+    return this.http.get<VideoContent>(`${this.baseUrl}/movie/${movieId}?api_key=${this.apiKey}&language=en-US&append_to_response=videos`);
   }
 
 
